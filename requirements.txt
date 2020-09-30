@@ -1,0 +1,8 @@
+setuptools
+pyrogram
+tgcrypto
+requests
+pytz
+colorama
+rich
+aiohttp
