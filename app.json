@@ -1,0 +1,69 @@
+{
+    "name": "kekikRobot",
+    "description": "KekikAkademi için PyroGram Robot",
+    "logo": "https://i.imgur.com/dTxK1zA.jpg",
+    "keywords": [
+      "telegram",
+      "pyrogram",
+      "Robot",
+      "kekikakademi",
+      "keyiflerolsun",
+      "kekikRobot"
+    ],
+    "repository": "https://github.com/KekikAkademi/kekikRobot",
+    "success_url": "https://t.me/KekikAkademi",
+    "website": "https://www.kekikakademi.org/",
+    "env": {
+      "ENV": {
+        "description": "Bunu HERHANGİ BİR ŞEY olarak ayarlamak, ortam değişkenlerini etkinleştirir",
+        "value": "keyiflerolsun",
+        "required": true
+      },
+      "API_ID": {
+        "description": "Bu değeri şuradan alın: https://my.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "API_HASH": {
+        "description": "Bu değeri şuradan alın: https://my.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "BOT_TOKEN": {
+        "description": "@BotFather'dan alınan token",
+        "value": "",
+        "required": true
+      },
+      "LOG_ID": {
+        "description": "Log'ların gönderileceği kanal/grup/kullanıcı ID",
+        "value": "-100111111111",
+        "required": true
+      },
+      "YETKILI": {
+        "description": "Sadece yetkilerin erişebileceği komutlar için Kullanıcı ID'leri. Lütfen virgülle ayırın ve boşluk bırakmayın..",
+        "value": "717569643,111111",
+        "required": true
+      },
+      "SESSION_ADI": {
+        "description": "Botunuzun Kullanıcı Adı",
+        "value": "kekikRobot",
+        "required": true
+      },
+      "INDIRME_ALANI": {
+        "description": "geçici indirme alanı, dosya sistemini içeren eklentiler için gereklidir..",
+        "value": "downloads/",
+        "required": true
+      }
+    },
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ],
+    "formation": {
+      "worker": {
+        "quantity": 1,
+        "size": "free"
+      }
+    }
+  }
