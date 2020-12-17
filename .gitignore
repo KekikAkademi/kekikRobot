@@ -130,3 +130,4 @@ dmypy.json
 
 *.session
 ayar.env
+*KULLANICILAR.json

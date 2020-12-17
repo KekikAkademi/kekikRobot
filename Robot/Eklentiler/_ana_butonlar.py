@@ -21,8 +21,18 @@ yardim_butonu = [
     ]
 ]
 
+# Kullanıcı Kaydet
+from Robot.Edevat.dict2json import dict2json
+
 @Client.on_message(filters.command(['start'], ['!','.','/']))
 async def start_buton(client:Client, message:Message):
+    #Kullanıcı Kaydet
+    dict2json({
+            'kullanici_id'  : message.from_user.id,
+            'kullanici_nick': f"@{message.from_user.username}" if message.from_user.username else None,
+            'kullanici_adi' : f"{message.from_user.first_name} {message.from_user.last_name}"
+        }, liste_key="kullanici_id", dosya_adi=f'{SESSION_ADI}_KULLANICILAR.json')
+
     # Hoş Geldin Mesajı
     await message.reply(start_mesajı, reply_markup=InlineKeyboardMarkup(start_butonu))
 
