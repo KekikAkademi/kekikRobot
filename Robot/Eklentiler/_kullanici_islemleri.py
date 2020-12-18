@@ -95,7 +95,7 @@ async def kull_al(client:Client, message:Message):
     )
     #------------------------------------------------------------- Başlangıç >
 
-    if (message.reply_to_message.document) and (message.reply_to_message.document.file_name == kullanicilar):
+    if (message.reply_to_message) and (message.reply_to_message.document) and (message.reply_to_message.document.file_name == kullanicilar):
         bakalim = await client.download_media(message=message.reply_to_message, file_name=kullanicilar)
         with open(kullanicilar, 'w+') as dosya:
             dosya.write(json.dumps(json.load(open(bakalim)), sort_keys=False, indent=2, ensure_ascii=False))
