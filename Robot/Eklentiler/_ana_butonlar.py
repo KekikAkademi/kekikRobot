@@ -29,15 +29,16 @@ kullanicilar = f"{SESSION_ADI}_KULLANICILAR.json"
 
 @Client.on_message(filters.command(['start'], ['!','.','/']))
 async def start_buton(client:Client, message:Message):
-    #Kullanıcı Kaydet
-    dict2json({
-            'kullanici_id'  : message.from_user.id,
-            'kullanici_nick': f"@{message.from_user.username}" if message.from_user.username else None,
-            'kullanici_adi' : f"{message.from_user.first_name} {message.from_user.last_name}"
-        }, liste_key="kullanici_id", dosya_adi=kullanicilar)
+    if message.chat.type == "private":
+        #Kullanıcı Kaydet
+        dict2json({
+                'kullanici_id'  : message.from_user.id,
+                'kullanici_nick': f"@{message.from_user.username}" if message.from_user.username else None,
+                'kullanici_adi' : f"{message.from_user.first_name or ''} {message.from_user.last_name or ''}".strip()
+            }, liste_key="kullanici_id", dosya_adi=kullanicilar)
 
-    vatandas, _ = await kullanici(message)
-    await client.send_document(YETKILI[0], kullanicilar, caption=f"{vatandas} __Eklendi..__")
+        vatandas, _ = await kullanici(message)
+        await client.send_document(YETKILI[0], kullanicilar, caption=f"{vatandas} __Eklendi..__")
 
     # Hoş Geldin Mesajı
     await message.reply(start_mesajı, reply_markup=InlineKeyboardMarkup(start_butonu))
