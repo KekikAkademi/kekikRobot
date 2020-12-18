@@ -3,7 +3,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, CallbackQuery
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from Robot import SESSION_ADI
+from Robot import SESSION_ADI, YETKILI
 
 # Ana Butonlar
 start_mesajı = "Hoş Geldin!\n/yardim alabilirsin"
@@ -23,6 +23,9 @@ yardim_butonu = [
 
 # Kullanıcı Kaydet
 from Robot.Edevat.dict2json import dict2json
+from Robot.Edevat._pyrogram.pyro_yardimcilari import kullanici
+
+kullanicilar = f"{SESSION_ADI}_KULLANICILAR.json"
 
 @Client.on_message(filters.command(['start'], ['!','.','/']))
 async def start_buton(client:Client, message:Message):
@@ -31,7 +34,10 @@ async def start_buton(client:Client, message:Message):
             'kullanici_id'  : message.from_user.id,
             'kullanici_nick': f"@{message.from_user.username}" if message.from_user.username else None,
             'kullanici_adi' : f"{message.from_user.first_name} {message.from_user.last_name}"
-        }, liste_key="kullanici_id", dosya_adi=f'{SESSION_ADI}_KULLANICILAR.json')
+        }, liste_key="kullanici_id", dosya_adi=kullanicilar)
+
+    vatandas, _ = await kullanici(message)
+    await client.send_document(YETKILI[0], kullanicilar, caption=f"{vatandas} __Eklendi..__")
 
     # Hoş Geldin Mesajı
     await message.reply(start_mesajı, reply_markup=InlineKeyboardMarkup(start_butonu))
