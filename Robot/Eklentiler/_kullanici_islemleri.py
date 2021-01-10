@@ -136,11 +136,10 @@ async def duyuru(client:Client, message:Message):
     hatalar  = []
     for kullanici in KULLANICILAR():
         try:
-            await client.forward_messages(
+            await client.copy_message(
                 chat_id      = kullanici['kullanici_id'],
                 from_chat_id = message.reply_to_message.chat.id,
-                message_ids  = message.reply_to_message.message_id,
-                as_copy      = True
+                message_id   = message.reply_to_message.message_id
             )
             basarili += 1
         except Exception as hata:
