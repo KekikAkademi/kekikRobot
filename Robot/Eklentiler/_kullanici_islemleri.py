@@ -134,6 +134,7 @@ async def duyuru(client:Client, message:Message):
 
     basarili = 0
     hatalar  = []
+    mesaj_giden_kisiler = []
     for kullanici in KULLANICILAR():
         try:
             await client.copy_message(
@@ -141,9 +142,12 @@ async def duyuru(client:Client, message:Message):
                 from_chat_id = message.reply_to_message.chat.id,
                 message_id   = message.reply_to_message.message_id
             )
+            mesaj_giden_kisiler.append(kullanici)
             basarili += 1
         except Exception as hata:
             hatalar.append(type(hata).__name__)
+    with open(kullanicilar, 'w+') as dosya:
+        dosya.write(json.dumps(mesaj_giden_kisiler, indent=2, sort_keys=True, ensure_ascii=False))
 
     mesaj = f"`{basarili}` __Adet Kullanıcıya Mesaj Attım..__"
     mesaj += f"\n\n**Hatalar :** \n\n```{hatalar}```" if hatalar else ""
