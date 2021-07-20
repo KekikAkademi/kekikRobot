@@ -52,7 +52,12 @@ SESSION_ADI     = os.environ.get("SESSION_ADI", "kekikRobot")
 INDIRME_ALANI   = os.environ.get("INDIRME_ALANI", "downloads/")
 if not os.path.isdir(INDIRME_ALANI): os.makedirs(INDIRME_ALANI)
 
-MONGO_DB        = str(os.environ.get("MONGO_DB", str))
+MONGO_DB        = str(os.environ.get("MONGO_DB", str)) if os.environ.get("MONGO_DB") else None
+
+if MONGO_DB:
+    from Robot.Edevat.DB._MongoDB import kekikRobotDB
+else:
+    from Robot.Edevat.DB._TinyDB import kekikRobotDB
 
 try:
     kekikRobot          = Client(

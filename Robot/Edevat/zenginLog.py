@@ -8,8 +8,7 @@ from Robot import SESSION_ADI, LOG_ID, hata, taban
 tarih   = lambda : datetime.datetime.now(pytz.timezone("Turkey")).strftime("%d-%m-%Y")
 saat    = lambda : datetime.datetime.now(pytz.timezone("Turkey")).strftime("%H:%M:%S")
 
-from Robot.Edevat.DB._TinyDB import kekikRobotDB
-# from Robot.Edevat.DB._MongoDB import kekikRobotDB
+from Robot import kekikRobotDB
 
 async def log_yolla(client:Client, message:Message):
     uye_id   = message.from_user.id

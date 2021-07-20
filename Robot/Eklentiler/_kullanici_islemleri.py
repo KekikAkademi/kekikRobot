@@ -21,8 +21,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from Robot import YETKILI
 
-from Robot.Edevat.DB._TinyDB import kekikRobotDB
-# from Robot.Edevat.DB._MongoDB import kekikRobotDB
+from Robot import kekikRobotDB
 
 @Client.on_message(filters.command(['kull_say'], ['!','.','/']))
 async def kull_say(client:Client, message:Message):
