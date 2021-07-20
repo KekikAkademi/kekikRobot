@@ -18,7 +18,6 @@ DESTEK_KOMUT.update({
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from Robot.Edevat._pyrogram.pyro_yardimcilari import yanitlanan_mesaj
 from Robot.Edevat._pyrogram.progress import pyro_progress
 from Robot import INDIRME_ALANI, YETKILI
 from time import time
@@ -28,14 +27,12 @@ from asyncio import sleep
 async def indir(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
 
     if str(message.from_user.id) not in YETKILI:
-        await message.reply("__admin değilmişsin kekkooo__", reply_to_message_id=yanit_id)
-        return
+        return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
-    ilk_mesaj = await message.reply("`Hallediyorum..`",
-        reply_to_message_id      = yanit_id,
+    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
     #------------------------------------------------------------- Başlangıç >

@@ -26,9 +26,9 @@ import asyncio, datetime
 async def ping(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
-    ilk_mesaj = await message.reply("__Bekleyin..__",
-        reply_to_message_id      = yanit_id,
+
+    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
     #------------------------------------------------------------- Başlangıç >
@@ -56,14 +56,12 @@ async def ping(client:Client, message:Message):
 async def jsn_ver(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
 
     if str(message.from_user.id) not in YETKILI:
-        await message.reply("__admin değilmişsin kekkooo__", reply_to_message_id=yanit_id)
-        return
+        return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
-    ilk_mesaj = await message.reply("`Hallediyorum..`",
-        reply_to_message_id      = yanit_id,
+    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
     #------------------------------------------------------------- Başlangıç >

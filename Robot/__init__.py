@@ -66,11 +66,11 @@ except ValueError:
 
 DESTEK_KOMUT = {}
 
-tum_eklentiler = []
-for dosya in os.listdir("./Robot/Eklentiler/"):
-    if not dosya.endswith(".py") or dosya.startswith("_"):
-        continue
-    tum_eklentiler.append(f"📂 {dosya.replace('.py','')}")
+tum_eklentiler = [
+    f"📂 {dosya.replace('.py','')}"
+        for dosya in os.listdir("./Robot/Eklentiler/")
+            if dosya.endswith(".py") and not dosya.startswith("_")
+]
 
 def baslangic() -> None:
     try:

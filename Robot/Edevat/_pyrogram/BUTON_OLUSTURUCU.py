@@ -1,9 +1,13 @@
-# https://github.com/MuhendisKoyu/HangisiniOgrenmeli
+# Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
+    # https://github.com/MuhendisKoyu/HangisiniOgrenmeli
 
-from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardButton, ReplyKeyboardMarkup
 
 def dilimleyici(buton_listesi:list, adet:int=2) -> list:
     return [buton_listesi[i : i + adet] for i in range(0, len(buton_listesi), adet)]
+
+def buton_ver(liste:list, adet:int) -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(dilimleyici(liste, adet), resize_keyboard = True)
 
 def buton_olustur(butonlar:dict, adet:int, link:bool=False, data:bool=False, geri:str=None, ana_sayfa:str=None) -> list:
     """

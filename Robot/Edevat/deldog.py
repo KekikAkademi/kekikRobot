@@ -8,4 +8,5 @@ async def deldog(veri) -> str:
     async with aiohttp.ClientSession() as oturum:
         async with oturum.post(f'{baslangic_url}/api/documents', json={"content":veri}, timeout=3) as yanit:
             url = (await yanit.json())["result"]["key"]
-            return f'{baslangic_url}/raw/{url}'
+            # return f'{baslangic_url}/raw/{url}'
+            return f'{baslangic_url}/{url}'

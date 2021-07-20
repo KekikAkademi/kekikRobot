@@ -92,21 +92,19 @@ async def destek(client:Client, message:Message):
 
     await ilk_mesaj.edit(mesaj)
 
-@Client.on_message(filters.command(['logsalla'], ['!','.','/']))
+@Client.on_message(filters.command(['logsalla'], ['!','.','/']) & filters.private)
 async def logsalla(client:Client, message:Message):
     await log_yolla(client, message)
 
-    yanit_id = await yanitlanan_mesaj(message)
-
     if str(message.from_user.id) not in YETKILI:
-        await message.reply("__admin değilmişsin kekkooo__", reply_to_message_id=yanit_id)
+        await message.reply("⚠️ __admin değilmişsin kekkooo__", quote = True)
         return
 
     with open(f"@{SESSION_ADI}.log", "r") as dosya_log:
         raw_log = await deldog(dosya_log.read())
 
     await message.reply(
-        f"**Log istersin de vermez miyim..**\n\n__[@{SESSION_ADI} Logları]({raw_log})__",
-        disable_web_page_preview    = True,
-        reply_to_message_id         = yanit_id
+        f"🗄 **Log istersin de vermez miyim..**\n\n__[📃 @{SESSION_ADI} Logları]({raw_log})__",
+        disable_web_page_preview = True,
+        quote                    = True
     )
