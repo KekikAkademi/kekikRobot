@@ -28,7 +28,7 @@ async def indir(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
 
-    if str(message.from_user.id) not in YETKILI:
+    if message.from_user.id not in YETKILI:
         return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
     ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",

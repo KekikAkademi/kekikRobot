@@ -96,7 +96,7 @@ async def destek(client:Client, message:Message):
 async def logsalla(client:Client, message:Message):
     await log_yolla(client, message)
 
-    if str(message.from_user.id) not in YETKILI:
+    if message.from_user.id not in YETKILI:
         await message.reply("⚠️ __admin değilmişsin kekkooo__", quote = True)
         return
 

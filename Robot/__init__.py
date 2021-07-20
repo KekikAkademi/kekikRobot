@@ -47,7 +47,7 @@ API_ID          = str(os.environ.get("API_ID", str))
 API_HASH        = str(os.environ.get("API_HASH", str))
 BOT_TOKEN       = str(os.environ.get("BOT_TOKEN", str))
 LOG_ID          = str(os.environ.get("LOG_ID", str))
-YETKILI         = str(os.environ.get("YETKILI", str)).split(',')
+YETKILI         = [int(yetkili) for yetkili in str(os.environ.get("YETKILI", str)).split(',')]
 SESSION_ADI     = os.environ.get("SESSION_ADI", "kekikRobot")
 INDIRME_ALANI   = os.environ.get("INDIRME_ALANI", "downloads/")
 if not os.path.isdir(INDIRME_ALANI): os.makedirs(INDIRME_ALANI)
@@ -56,7 +56,7 @@ try:
     kekikRobot          = Client(
         api_id          = API_ID,
         api_hash        = API_HASH,
-        session_name    = f'@{SESSION_ADI}',
+        session_name    = ':memory:',
         bot_token       = BOT_TOKEN,
         plugins         = dict(root="Robot/Eklentiler")
     )

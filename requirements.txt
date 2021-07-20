@@ -1,7 +1,11 @@
-KekikTaban
 setuptools
+KekikTaban
 pyrogram
+tgcrypto
 asyncio
 aiohttp
-tgcrypto
 python-dotenv
+
+tinydb
+dnspython
+pymongo[srv]

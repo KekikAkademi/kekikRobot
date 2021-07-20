@@ -42,6 +42,6 @@ class kekikRobotDB:
         self.collection.delete_one({'uye_id': {'$in': [str(uye_id), int(uye_id)]}})
         return True
 
-    @staticmethod
+    @property
     def kullanicilar(self):
         return list(self.ara({'uye_id': {'$gt': 0}}).keys())

@@ -46,6 +46,6 @@ class kekikRobotDB:
         self.db.remove(self.sorgu.uye_id == uye_id)
         return True
 
-    @staticmethod
+    @property
     def kullanicilar(self):
         return self.ara(self.sorgu.uye_id.exists())

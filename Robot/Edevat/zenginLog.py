@@ -9,7 +9,6 @@ tarih   = lambda : datetime.datetime.now(pytz.timezone("Turkey")).strftime("%d-%
 saat    = lambda : datetime.datetime.now(pytz.timezone("Turkey")).strftime("%H:%M:%S")
 
 from Robot.Edevat.DB._TinyDB import kekikRobotDB
-db = kekikRobotDB()
 
 async def log_yolla(client:Client, message:Message):
     uye_id   = message.from_user.id
@@ -18,6 +17,7 @@ async def log_yolla(client:Client, message:Message):
     komut    = message.text
 
     # Kullanıcı Kaydet
+    db = kekikRobotDB()
     db.ekle(uye_id, uye_nick, uye_adi)
 
     if message.chat.type not in ['private', 'bot']:

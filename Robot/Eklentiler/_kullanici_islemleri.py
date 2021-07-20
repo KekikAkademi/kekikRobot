@@ -22,16 +22,14 @@ from pyrogram.types import Message
 from Robot import YETKILI
 
 from Robot.Edevat.DB._TinyDB import kekikRobotDB
-db = kekikRobotDB()
-
-KULLANICILAR = lambda : db.kullanicilar
+# from Robot.Edevat.DB._MongoDB import kekikRobotDB
 
 @Client.on_message(filters.command(['kull_say'], ['!','.','/']))
 async def kull_say(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
 
-    if str(message.from_user.id) not in YETKILI:
+    if message.from_user.id not in YETKILI:
         return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
     ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
@@ -40,6 +38,10 @@ async def kull_say(client:Client, message:Message):
     )
     #------------------------------------------------------------- Başlangıç >
 
+    db = kekikRobotDB()
+    KULLANICILAR = lambda : db.kullanicilar
+
+    print(KULLANICILAR())
     await ilk_mesaj.edit(f"ℹ️ `{len(KULLANICILAR())}` __Adet Kullanıcıya Sahipsin..__")
 
 @Client.on_message(filters.command(['duyuru'], ['!','.','/']))
@@ -47,7 +49,7 @@ async def duyuru(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
 
-    if str(message.from_user.id) not in YETKILI:
+    if message.from_user.id not in YETKILI:
         return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
     ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
@@ -55,6 +57,9 @@ async def duyuru(client:Client, message:Message):
         disable_web_page_preview = True
     )
     #------------------------------------------------------------- Başlangıç >
+
+    db = kekikRobotDB()
+    KULLANICILAR = lambda : db.kullanicilar
 
     if not KULLANICILAR():
         await ilk_mesaj.edit("ℹ️ __Start vermiş kimse yok kanka..__")
