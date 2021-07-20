@@ -3,11 +3,8 @@
 from os import listdir
 
 def eklentilerim() -> str:
-    eklenti_listele = ""
-
-    for dosya in listdir("./Robot/Eklentiler/"):
-        if not dosya.endswith(".py") or dosya.startswith("_"):
-            continue
-        eklenti_listele += f"📂 `{dosya.replace('.py','')}`\n"
-
-    return eklenti_listele
+    return "".join(
+        f"📂 `{dosya.replace('.py','')}`\n"
+            for dosya in listdir("./Robot/Eklentiler/")
+                if dosya.endswith(".py") and not dosya.startswith("_")
+    )
