@@ -47,5 +47,5 @@ class kekikRobotDB:
         return True
 
     @property
-    def kullanicilar(self):
-        return self.ara(self.sorgu.uye_id.exists())
+    def kullanici_idleri(self):
+        return list(self.ara(self.sorgu.uye_id.exists()).keys())

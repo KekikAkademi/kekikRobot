@@ -32,16 +32,15 @@ async def kull_say(client:Client, message:Message):
     if message.from_user.id not in YETKILI:
         return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
-    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
         quote                    = True,
         disable_web_page_preview = True
     )
     #------------------------------------------------------------- Başlangıç >
 
     db = kekikRobotDB()
-    KULLANICILAR = lambda : db.kullanicilar
+    KULLANICILAR = lambda : db.kullanici_idleri
 
-    print(KULLANICILAR())
     await ilk_mesaj.edit(f"ℹ️ `{len(KULLANICILAR())}` __Adet Kullanıcıya Sahipsin..__")
 
 @Client.on_message(filters.command(['duyuru'], ['!','.','/']))
@@ -52,14 +51,14 @@ async def duyuru(client:Client, message:Message):
     if message.from_user.id not in YETKILI:
         return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
-    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
         quote                    = True,
         disable_web_page_preview = True
     )
     #------------------------------------------------------------- Başlangıç >
 
     db = kekikRobotDB()
-    KULLANICILAR = lambda : db.kullanicilar
+    KULLANICILAR = lambda : db.kullanici_idleri
 
     if not KULLANICILAR():
         await ilk_mesaj.edit("ℹ️ __Start vermiş kimse yok kanka..__")
@@ -72,18 +71,18 @@ async def duyuru(client:Client, message:Message):
     basarili = 0
     hatalar  = []
     mesaj_giden_kisiler = []
-    for kullanici in KULLANICILAR():
+    for kullanici_id in KULLANICILAR():
         try:
             await client.copy_message(
-                chat_id      = kullanici,
+                chat_id      = kullanici_id,
                 from_chat_id = message.reply_to_message.chat.id,
                 message_id   = message.reply_to_message.message_id
             )
-            mesaj_giden_kisiler.append(kullanici)
+            mesaj_giden_kisiler.append(kullanici_id)
             basarili += 1
         except Exception as hata:
             hatalar.append(type(hata).__name__)
-            db.sil(kullanici)
+            db.sil(kullanici_id)
 
 
     mesaj = f"⁉️ `{len(hatalar)}` __Adet Kişiye Mesaj Atamadım ve DB'den Sildim..__\n\n" if hatalar else ""

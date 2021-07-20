@@ -52,6 +52,8 @@ SESSION_ADI     = os.environ.get("SESSION_ADI", "kekikRobot")
 INDIRME_ALANI   = os.environ.get("INDIRME_ALANI", "downloads/")
 if not os.path.isdir(INDIRME_ALANI): os.makedirs(INDIRME_ALANI)
 
+MONGO_DB        = str(os.environ.get("MONGO_DB", str))
+
 try:
     kekikRobot          = Client(
         api_id          = API_ID,

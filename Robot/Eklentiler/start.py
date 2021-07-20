@@ -11,7 +11,7 @@ async def start_buton(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
 
-    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
         quote                    = True,
         disable_web_page_preview = True
     )

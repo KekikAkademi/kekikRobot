@@ -43,5 +43,5 @@ class kekikRobotDB:
         return True
 
     @property
-    def kullanicilar(self):
+    def kullanici_idleri(self):
         return list(self.ara({'uye_id': {'$gt': 0}}).keys())

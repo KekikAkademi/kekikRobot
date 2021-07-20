@@ -84,7 +84,7 @@ async def eklenti_al(client:Client, message:Message):
     yanit_id  = await yanitlanan_mesaj(message)
 
     if message.from_user.id not in YETKILI:
-        await message.reply("__admin değilmişsin kekkooo__", reply_to_message_id=yanit_id)
+        await message.reply("⚠️ __admin değilmişsin kekkooo__", reply_to_message_id=yanit_id)
         return
 
     ilk_mesaj = await message.reply(mesaj_baslangici,
@@ -125,7 +125,7 @@ async def eklenti_sil(client:Client, message:Message):
     yanit_id  = await yanitlanan_mesaj(message)
 
     if message.from_user.id not in YETKILI:
-        await message.reply("__admin değilmişsin kekkooo__", reply_to_message_id=yanit_id)
+        await message.reply("⚠️ __admin değilmişsin kekkooo__", reply_to_message_id=yanit_id)
         return
 
     ilk_mesaj = await message.reply(mesaj_baslangici,

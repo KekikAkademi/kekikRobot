@@ -31,7 +31,7 @@ async def indir(client:Client, message:Message):
     if message.from_user.id not in YETKILI:
         return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
-    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
         quote                    = True,
         disable_web_page_preview = True
     )

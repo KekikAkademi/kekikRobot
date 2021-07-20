@@ -27,7 +27,7 @@ async def ping(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
 
-    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
         quote                    = True,
         disable_web_page_preview = True
     )
@@ -60,7 +60,7 @@ async def jsn_ver(client:Client, message:Message):
     if message.from_user.id not in YETKILI:
         return await message.reply("⚠️ __admin değilmişsin kekkooo__")
 
-    ilk_mesaj = await message.reply("ℹ️ `Hallediyorum..`",
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
         quote                    = True,
         disable_web_page_preview = True
     )
