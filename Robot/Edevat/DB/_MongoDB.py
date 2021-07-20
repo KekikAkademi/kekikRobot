@@ -44,4 +44,4 @@ class kekikRobotDB:
 
     @property
     def kullanici_idleri(self):
-        return list(self.ara({'uye_id': {'$gt': 0}}).keys())
+        return list(self.ara({'uye_id': {'$exists': True}}).keys())
